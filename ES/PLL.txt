@@ -1,0 +1,34 @@
+#include <lpc214x.h>
+
+void initPLL(void) {
+  PLL0CON = 0x01; // Enable PLL
+  PLL0FEED = 0xAA;
+  PLL0FEED = 0x55;
+
+  PLL0CFG = 0x00; // MSEL = 4 (multiply by 5), PSEL = 0 (divide by 1) -> 12MHz * 5 = 60MHz
+  PLL0FEED = 0xAA;
+  PLL0FEED = 0x55;
+
+  while (!(PLL0STAT & (1 << 10)))
+  PLL0CON = 0x03; // Enable and connect PLL
+  PLL0FEED = 0xAA;
+  PLL0FEED = 0x55;
+  VPBDIV = 0x01; // PCLK = CCLK (APB divider set to 1)
+}
+
+void initClocks10MHz(void) {
+  PLL0CON = 0x01; // Disable PLL
+  PLL0FEED = 0xAA;
+  PLL0FEED = 0x55;
+  PLL0CFG = 0x23; // MSEL = 0, PSEL = 0 (bypass)
+  PLL0FEED = 0xAA;
+  PLL0FEED = 0x55;
+  PLL0CON = 0x03; // Connect PLL (bypass)
+  PLL0FEED = 0xAA;
+  PLL0FEED = 0x55;
+  VPBDIV = 0x01; // PCLK = CCLK
+}
+int main(){
+	initClocks10MHz();
+
+}

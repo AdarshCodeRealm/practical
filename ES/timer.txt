@@ -1,0 +1,19 @@
+#include <lpc214x.h>
+void delayms()
+{
+ T0TCR = 0X100;
+ T0PR = 6000-1;
+	T0TC = 0;
+	T0TCR = 1;
+}
+int main(){
+while(1)
+	{
+	IODIR0=0X00FF000;
+	IOSET0=0XFFF000;
+	delayms();
+	IOCLR0=0X00FF0000;
+	delayms ();
+}
+return 0;
+	}

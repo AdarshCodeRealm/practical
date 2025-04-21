@@ -1,0 +1,18 @@
+#include<lpc214x.h>
+void delay(){
+	int i;
+	for(i=0; i<5000000;i++);
+}
+int main(){
+	int arr[] = {63,9,91,79,102,109};
+	IODIR0 = 127; // Configure P0.4 as input, P0.6 as output
+	while(1){
+		int i;
+			for(i=0; i<5;i++){
+				IOSET0 = arr[i];
+				delay();
+				IOCLR0=127;
+			}
+		}
+	return 0;
+}

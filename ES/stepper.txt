@@ -1,0 +1,31 @@
+#include <lpc213x.h> // Header for LPC2138
+
+void delay() {
+    int i;
+    for (i = 0; i < 21200; i++);
+}
+
+int main() {
+    // Configure P0.8, P0.9, P0.10, and P0.11 as outputs
+    IO0DIR |= (1 << 8) | (1 << 9) | (1 << 10) | (1 << 11);
+
+    while (1) {
+        IO0SET = (1 << 8);
+        IO0CLR = (1 << 9) | (1 << 10) | (1 << 11);
+        delay();
+
+        IO0SET = (1 << 9);
+        IO0CLR = (1 << 8) | (1 << 10) | (1 << 11);
+        delay();
+
+        IO0SET = (1 << 10);
+        IO0CLR = (1 << 8) | (1 << 9) | (1 << 11);
+        delay();
+
+        IO0SET = (1 << 11);
+        IO0CLR = (1 << 8) | (1 << 9) | (1 << 10);
+        delay();
+    }
+
+    return 0;
+}

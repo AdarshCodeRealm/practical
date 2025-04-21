@@ -1,0 +1,18 @@
+#include <lpc214x.h> // Header for LPC2138
+void delay() {
+    int i;
+    for (i = 0; i < 2000; i++);
+}
+int main()
+{
+	int i,j;
+	PINSEL1 = 1<<19;
+	DACR = 0;
+	while(1){
+			DACR = 0x03FF<<6;
+			delay();
+			DACR = 0x0000;
+			delay();
+	}
+	return 0;
+}

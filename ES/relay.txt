@@ -1,0 +1,12 @@
+#include<lpc214x.h>
+
+int main(){
+	IODIR0 = (0<<4)|(1<<6); // Configure P0.4 as input, P0.6 as output
+	while(1){
+			if((IOPIN0 & (1<<4))!=0) // Check if P0.4 is HIGH
+			IOSET0 = (1<<6); // Set P0.4 and P0.6 HIGH
+			else
+			IOCLR0 = (1<<6); // Set P0.4 and P0.6 LOW
+			}
+	return 0;
+}
