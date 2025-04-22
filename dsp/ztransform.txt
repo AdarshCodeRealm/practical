@@ -1,0 +1,47 @@
+clc;
+clear all;
+close all;
+
+% Define the symbolic variable
+syms n z
+
+% Define the unit impulse function
+delta = dirac(n);
+
+% Calculate the Z-transform
+Z_delta = ztrans(delta, n, z);
+
+% Display the result
+disp('Z-transform of unit impulse:');
+disp(Z_delta);
+
+% Define the unit step function
+u = heaviside(n);
+
+% Calculate the Z-transform
+Z_u = ztrans(u, n, z);
+
+% Display the result
+disp('Z-transform of unit step:');
+disp(Z_u);
+
+% Define the ramp function
+r = n * heaviside(n);
+
+% Calculate the Z-transform
+Z_r = ztrans(r, n, z);
+
+% Display the result
+disp('Z-transform of ramp:');
+disp(Z_r);
+
+% Define the exponential function
+syms a
+exp_func = a^n * heaviside(n);
+
+% Calculate the Z-transform
+Z_exp = ztrans(exp_func, n, z);
+
+% Display the result
+disp('Z-transform of exponential function:');
+disp(Z_exp);

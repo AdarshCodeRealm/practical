@@ -1,0 +1,14 @@
+clc;            % Clear the command window
+clear all;      % Clear all variables from the workspace
+close all;      % Close all figure windows
+
+b = [1];                % Define numerator coefficients of the filter
+a = [1, -1, 0.9];       % Define denominator coefficients of the filter
+n = -20:120;            % Define the range of n
+t = 0:0.1:2*pi;         % Define the time vector
+x = sin(t);             % Generate a sinusoidal signal
+s = filter(b, a, x);    % Apply the filter to the signal
+stem(t, s);             % Plot the stem plot of the filtered signal
+title("Sinusoidal Response"); % Title of the plot
+xlabel("n");           % Label for the x-axis
+ylabel("s(n)");        % Label for the y-axis

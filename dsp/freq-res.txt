@@ -1,0 +1,27 @@
+num = [2, 3];  % Coefficients of the numerator (b1, b0)
+den = [1, 5, 6];  % Coefficients of the denominator (a2, a1, a0)
+% Create the transfer function
+H = tf(num, den);
+% Step 2: Plot the Bode plot (magnitude and phase response)
+figure;
+bode(H);
+grid on;
+title('Frequency Response (Bode Plot)');
+% Alternatively, using the freqs function to get the frequency response
+% Define the frequency range (from 0.1 to 100 rad/s)
+omega = logspace(-1, 2, 100);
+[mag, phase] = freqs(num, den, omega);
+% Step 3: Plot the Magnitude and Phase response
+figure;
+subplot(2,1,1);
+semilogx(omega, 20*log10(mag)); % Magnitude in dB
+xlabel('Frequency (rad/s)');
+ylabel('Magnitude (dB)');
+title('Magnitude Response');
+grid on;
+subplot(2,1,2);
+semilogx(omega, phase); % Phase in degrees
+xlabel('Frequency (rad/s)');
+ylabel('Phase (degrees)');
+title('Phase Response');
+grid on;

@@ -1,0 +1,51 @@
+clc;
+clear all;
+close all;
+%=======   sin(n)    ==============================
+syms n z
+% Define the trigonometric function (e.g., sin(n))
+f = sin(n);
+% Calculate the Z-transform
+F = ztrans(f, n, z);
+% Display the result
+disp('Z-transform of sin(n):');
+disp(F);
+
+%=======  z  ==============================
+% Define the symbolic variable
+syms z
+% Define the function
+f = z;
+% Calculate the Z-transform
+F = ztrans(f);
+% Display the result
+disp('Z-transform of z:');
+disp(F);
+
+%=======   z^n    ==============================
+% Define the symbolic variables
+syms n z
+% Define the function
+f = z^n;
+% Calculate the Z-transform
+F = ztrans(f, n, z);
+% Display the result
+disp('Z-transform of z^n:');
+disp(F);
+
+
+
+%=======   z^(n-1)    ==============================
+% Define the symbolic variables
+syms n z
+% Define the function
+f = z^(n-1);
+% Calculate the Z-transform
+F = ztrans(f, n, z);
+% Display the result
+disp('Z-transform of z^{n-1}:');
+disp(F);
+
+
+
+

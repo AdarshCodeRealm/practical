@@ -1,0 +1,152 @@
+% generation of some elementry signal in discrete domain.
+
+clc
+close all
+clear all
+
+n=-5:0.1:2;
+x = [zeros(1,50),ones(1,21)];
+stem(n,x)
+%=========================================================================
+% unit step sequence
+figure()
+z=-10:10;
+x = [zeros(1,10),ones(1,11)];
+
+subplot(2,1,1)
+plot(z,x)
+title("unit step sequence")
+
+subplot(2,1,2)
+stem(z,x)
+%=========================================================================
+% Unit Impulse sequence
+figure()
+x = [zeros(1,10),ones(1,1),zeros(1,10)];
+
+subplot(2,1,1)
+plot(z,x)
+title("unit impulse sequence")
+
+subplot(2,1,2)
+stem(z,x)
+%=========================================================================
+% unit ramp sequence
+figure()
+n= 1:7
+subplot(2,1,1)
+plot(n)
+title("unit ramp sequence")
+
+subplot(2,1,2)
+stem(n)
+%=========================================================================
+% unit parabola sequence
+figure()
+n= 1:7
+
+subplot(2,1,1)
+plot((n.^2)/2)
+title("unit parabola sequence")
+
+subplot(2,1,2)
+stem((n.^2)/2)
+%=========================================================================
+% exponentially decay sequence
+figure()
+n= 1:0.1:7
+
+subplot(2,1,1)
+plot(exp(-2*pi*n))
+title("exponentially decay sequence")
+
+subplot(2,1,2)
+stem(exp(-2*pi*n))
+%=========================================================================
+% tripuls sequence
+figure()
+n= -2:0.1:2
+
+subplot(2,1,1)
+plot(tripuls(n))
+title("unit parabola sequence")
+
+subplot(2,1,2)
+stem(tripuls(n))
+
+figure()
+subplot(2,1,1)
+plot(tripuls(n,4))
+title("unit parabola sequence")
+
+subplot(2,1,2)
+stem(tripuls(n,4))
+
+%=========================================================================
+% tripuls sequence
+figure()
+n= -2:0.1:2
+
+subplot(2,1,1)
+plot(tripuls(n))
+title("unit tripuls sequence")
+
+subplot(2,1,2)
+stem(tripuls(n))
+
+figure()
+subplot(2,1,1)
+plot(tripuls(n,2))
+title("unit tripuls sequence with width 2")
+
+subplot(2,1,2)
+stem(tripuls(n,2))
+%==========================================================================
+% rectpuls sequence
+figure()
+n= -2:0.1:2
+
+subplot(2,1,1)
+plot(rectpuls(n))
+title("unit rectpuls sequence")
+
+subplot(2,1,2)
+stem(rectpuls(n))
+%==========================================================================
+% signum sequence
+figure()
+n= -2:0.1:2
+
+subplot(2,1,1)
+plot(sign(n))
+title("unit signum sequence")
+
+subplot(2,1,2)
+stem(sign(n))
+%==========================================================================
+% sinc sequence
+figure()
+n= -2:0.1:2
+
+subplot(2,1,1)
+plot(sinc(n))
+title("unit sinc sequence")
+
+subplot(2,1,2)
+stem(sinc(n))
+%==========================================================================
+% gaussion sequence
+figure()
+n = -5:0.1:5;
+
+M = mean(n);
+SD = std(n);
+gd = (1 / (SD * sqrt(2 * pi))) * exp((-1 / 2) * ((n - M) / SD).^2);
+
+subplot(2,1,1);
+plot(n,gd);
+title("Unit Gaussian Sequence");
+
+subplot(2,1,2);
+stem(n,gd);
+

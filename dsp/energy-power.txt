@@ -1,0 +1,20 @@
+clc;
+clear all;
+close all;
+k=1;
+n=-2:2;
+N=100;
+x=2*pi*k*n/N;
+L=length(x)
+for n=-2:2
+    E=abs(x).*abs(x);
+end
+P=E/L;
+subplot(2,1,1)
+stem(E);
+title('Energy of signal')
+xlim([0 6])
+ylim([-0.01 0.02])
+subplot(2,1,2)
+stem(P);
+title('Power of signal')
